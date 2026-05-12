@@ -1,4 +1,7 @@
-﻿var library = new Library();
+﻿
+using LibraryLib;
+
+var library = new Library();
 
         library.AddBook(new Book("Война и мир", "Толстой", 1869));
         library.AddBook(new Book("Анна Каренина", "Толстой", 1877));
@@ -26,3 +29,17 @@
             Console.WriteLine(book.GetInfo());
         }
         Console.WriteLine($"Количество доступных книг: {availableBooks.Count}");
+
+        var services = new ServiceCollection();
+
+        services.AddTransient<IUserValidator, UserValidator>();
+        services.AddTransient<IPasswordHasher, Base64PasswordHasher>();
+        services.AddTransient<IUserRepository>(_ => new FileUserRepository("users.txt"));
+        services.AddTransient<IEmailSender>(_ => new SmtpEmailSender("smtp.example.com", "noreply@app.com"));
+        services.AddTransient<ILogger>(_ => new FileLogger("log.txt"));
+        services.AddTransient<UserManager>();
+
+        var provider = services.BuildServiceProvider();
+
+        var manager = provider.GetRequiredService<UserManager>();
+        manager.RegisterUser("Alice", "alice@example.com", "secret123");
