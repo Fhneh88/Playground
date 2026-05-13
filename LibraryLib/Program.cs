@@ -1,6 +1,8 @@
 ﻿
 using LibraryLib;
 
+using Microsoft.Extensions.DependencyInjection;
+
 var library = new Library();
 
         library.AddBook(new Book("Война и мир", "Толстой", 1869));
