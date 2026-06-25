@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="WeatherNotification.Api/WeatherNotification.Api.csproj" />
+  <Project Path="WeatherNotification.Checker/WeatherNotification.Checker.csproj" />
+  <Project Path="WeatherNotification.Consumer/WeatherNotification.Consumer.csproj" />
+  <Project Path="WeatherNotification.Contracts/WeatherNotification.Contracts.csproj" />
+  <Project Path="WeatherNotification.Data/WeatherNotification.Data.csproj" />
+</Solution>

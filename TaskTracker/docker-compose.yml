@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: tasktracker-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: my_secret_pass
+      POSTGRES_DB: tasktracker
+      POSTGRES_HOST_AUTH_METHOD: scram-sha-256
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

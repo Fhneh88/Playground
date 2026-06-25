@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Consumer/Consumer.csproj" />
+  <Project Path="Contracts/Contracts.csproj" />
+  <Project Path="Producer/Producer.csproj" />
+  <Project Path="TemperatureMonitor.Tests/TemperatureMonitor.Tests.csproj" />
+</Solution>
