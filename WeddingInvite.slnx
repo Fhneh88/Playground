@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="WeddingInvite.Tests/WeddingInvite.Tests.csproj" />
+  <Project Path="WeddingInvite/WeddingInvite.csproj" />
+</Solution>
