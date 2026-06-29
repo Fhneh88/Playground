@@ -1,0 +1,19 @@
+@page
+@model WeddingInvite.Pages.ThankYouModel
+@{
+    ViewData["Title"] = "Спасибо!";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<main class="thankyou-page">
+    <div class="flower-divider">✿ ✾ ✿</div>
+    <h1 class="thankyou-title">
+        Спасибо, <span class="guest-name">@Model.GuestName</span>!
+    </h1>
+    <p class="thankyou-text">
+        Ваш выбор блюд сохранён.<br>
+        Мы с нетерпением ждём встречи с вами!
+    </p>
+    <div class="flower-divider">✿ ✾ ✿</div>
+    <a href="/" class="btn-back">← Вернуться на главную</a>
+</main>
