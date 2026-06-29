@@ -1,19 +1,31 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WeddingInvite.Models;
+using WeddingInvite.Services;
 
 namespace WeddingInvite.Pages;
 
 public class IndexModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger;
+    private readonly IGoogleSheetsService _sheetsService;
 
-    public IndexModel(ILogger<IndexModel> logger)
+    public IndexModel(IGoogleSheetsService sheetsService)
     {
-        _logger = logger;
+        _sheetsService = sheetsService;
     }
 
-    public void OnGet()
-    {
+    [BindProperty]
+    public RsvpModel Rsvp { get; set; } = new();
 
+    public void OnGet() { }
+
+    public async Task<IActionResult> OnPostAsync()
+    {
+        if (!ModelState.IsValid)
+            return Page();
+
+        await _sheetsService.AppendRowAsync(Rsvp);
+        return RedirectToPage("ThankYou", new { name = Rsvp.GuestName });
     }
 }
