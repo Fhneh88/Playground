@@ -1,10 +1,187 @@
-﻿@page
-@model IndexModel
+@page
+@model WeddingInvite.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Приглашение";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@* ===== HERO (вне формы — только для чтения) ===== *@
+<section class="section-hero">
+    <p class="hero-date">12 сентября 2026 года</p>
+    <h1 class="hero-names">
+        Александр <span class="hero-ampersand">&amp;</span> Анастасия
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-venue">Ресторан «Белая роза» &middot; Москва</p>
+    <div class="hero-divider"></div>
+    <p class="hero-invite-text">
+        Мы счастливы пригласить вас разделить с нами этот особенный день
+    </p>
+</section>
+
+@* ===== НАША ИСТОРИЯ ===== *@
+<section class="section-story animate-on-scroll">
+    <div class="container">
+        <h2 class="section-title">Наша история</h2>
+        <div class="flower-divider">&#10047; &#10046; &#10047;</div>
+        <div class="story-grid">
+            <div class="story-photo-placeholder">&#128247;</div>
+            <div class="story-photo-placeholder">&#128247;</div>
+            <div class="story-photo-placeholder">&#128247;</div>
+        </div>
+        <p class="story-text">
+            Мы познакомились в 2021 году и с первого взгляда поняли — это навсегда.
+            Три года вместе стали лучшими в нашей жизни, и теперь мы хотим сказать «да»
+            перед всеми, кто нам дорог.
+        </p>
+    </div>
+</section>
+
+@* ===== ПРОГРАММА ДНЯ ===== *@
+<section class="section-program animate-on-scroll">
+    <div class="container">
+        <h2 class="section-title">Программа дня</h2>
+        <div class="flower-divider">&#10047; &#10046; &#10047;</div>
+        <ul class="timeline">
+            <li class="timeline-item">
+                <span class="timeline-time">15:00</span>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <strong>Церемония бракосочетания</strong>
+                    <span>Торжественная регистрация в зале «Лилия»</span>
+                </div>
+            </li>
+            <li class="timeline-item">
+                <span class="timeline-time">16:00</span>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <strong>Фуршет и фотосессия</strong>
+                    <span>Шампанское, живая музыка, прогулка в саду</span>
+                </div>
+            </li>
+            <li class="timeline-item">
+                <span class="timeline-time">18:00</span>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <strong>Торжественный банкет</strong>
+                    <span>Ужин, тосты, первый танец</span>
+                </div>
+            </li>
+            <li class="timeline-item">
+                <span class="timeline-time">23:00</span>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <strong>Торт и завершение вечера</strong>
+                    <span>Разрезание торта и прощальный танец</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+@* ===== ФОРМА: один <form> охватывает меню + RSVP ===== *@
+<form method="post">
+
+    @* ===== МЕНЮ ===== *@
+    <section class="section-menu animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title">Меню</h2>
+            <p class="section-subtitle">Пожалуйста, выберите блюда, которые вам по вкусу</p>
+
+            <div class="menu-grid">
+
+                <div class="menu-category">
+                    <h3>Холодные закуски</h3>
+                    <label class="menu-item">
+                        <input type="radio" asp-for="Rsvp.Starter" value="Карпаччо из говядины" />
+                        Карпаччо из говядины
+                    </label>
+                    <label class="menu-item">
+                        <input type="radio" asp-for="Rsvp.Starter" value="Тартар из лосося" />
+                        Тартар из лосося
+                    </label>
+                    <label class="menu-item">
+                        <input type="radio" asp-for="Rsvp.Starter" value="Греческий салат" />
+                        Греческий салат
+                    </label>
+                    <span asp-validation-for="Rsvp.Starter" class="validation-error"></span>
+                </div>
+
+                <div class="menu-category">
+                    <h3>Горячее</h3>
+                    <label class="menu-item">
+                        <input type="radio" asp-for="Rsvp.MainCourse" value="Говядина Веллингтон" />
+                        Говядина Веллингтон
+                    </label>
+                    <label class="menu-item">
+                        <input type="radio" asp-for="Rsvp.MainCourse" value="Семга на гриле" />
+                        Сёмга на гриле
+                    </label>
+                    <label class="menu-item">
+                        <input type="radio" asp-for="Rsvp.MainCourse" value="Ризотто с грибами" />
+                        Ризотто с грибами
+                    </label>
+                    <span asp-validation-for="Rsvp.MainCourse" class="validation-error"></span>
+                </div>
+
+                <div class="menu-category">
+                    <h3>Десерт</h3>
+                    <label class="menu-item">
+                        <input type="radio" asp-for="Rsvp.Dessert" value="Шоколадный фондан" />
+                        Шоколадный фондан
+                    </label>
+                    <label class="menu-item">
+                        <input type="radio" asp-for="Rsvp.Dessert" value="Тарт с малиной" />
+                        Тарт с малиной
+                    </label>
+                    <label class="menu-item">
+                        <input type="radio" asp-for="Rsvp.Dessert" value="Панна котта" />
+                        Панна котта
+                    </label>
+                    <span asp-validation-for="Rsvp.Dessert" class="validation-error"></span>
+                </div>
+
+                <div class="menu-category">
+                    <h3>Напитки</h3>
+                    <label class="menu-item">
+                        <input type="checkbox" name="Rsvp.Drinks" value="Вино красное" />
+                        Вино красное
+                    </label>
+                    <label class="menu-item">
+                        <input type="checkbox" name="Rsvp.Drinks" value="Вино белое" />
+                        Вино белое
+                    </label>
+                    <label class="menu-item">
+                        <input type="checkbox" name="Rsvp.Drinks" value="Шампанское" />
+                        Шампанское
+                    </label>
+                    <label class="menu-item">
+                        <input type="checkbox" name="Rsvp.Drinks" value="Безалкогольное" />
+                        Безалкогольное
+                    </label>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    @* ===== RSVP ===== *@
+    <section class="section-rsvp animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title">Подтвердите участие</h2>
+            <div class="flower-divider">&#10047; &#10046; &#10047;</div>
+
+            <div class="rsvp-form">
+                <div class="form-group">
+                    <label asp-for="Rsvp.GuestName">Ваше имя и фамилия</label>
+                    <input asp-for="Rsvp.GuestName" class="form-control"
+                           placeholder="Иван Петров" autocomplete="name" />
+                    <span asp-validation-for="Rsvp.GuestName" class="validation-error"></span>
+                </div>
+
+                <button type="submit" class="btn-submit">Подтвердить участие</button>
+            </div>
+        </div>
+    </section>
+
+</form>
